@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context="com.example.nir.addresslist30.Order"
+    android:orientation="vertical">
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="62dp"
+        android:background="#ffff"
+        android:max="100"
+        android:layout_marginLeft="26dp"
+        android:layout_marginStart="26dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textColor="#ffff"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginRight="20dp"
+
+        />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/seekBar"
+        android:layout_alignRight="@+id/seekBar"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
+        android:layout_marginTop="13dp"
+        android:text="הנחת חבר"
+        android:textColor="#ffff"
+        android:textSize="30dp" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="250dp"
+        android:layout_height="20dp"
+        android:layout_alignEnd="@+id/seekBar"
+        android:layout_alignRight="@+id/seekBar"
+        android:layout_below="@+id/seekBar"
+        android:layout_marginTop="23dp"
+
+        android:backgroundTintMode="src_atop"
+        android:hapticFeedbackEnabled="false"
+        android:popupBackground="@android:color/black"
+        android:textColor="#0e0e0e" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="20dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/spinner"
+        android:layout_marginEnd="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_toLeftOf="@+id/spinner"
+        android:layout_toStartOf="@+id/spinner"
+        android:background="#0000"
+        android:text="+"
+        android:textAlignment="center"
+        android:textColor="#ffff"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="20dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/spinner"
+        android:layout_marginEnd="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_toLeftOf="@+id/button4"
+        android:background="#0000"
+        android:text="-"
+        android:textAlignment="center"
+        android:textColor="#ffff"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView3"
+        android:text="סך הכל"
+        android:textColor="#ffff"
+        android:layout_alignTop="@+id/textView3"
+        android:layout_alignRight="@+id/editText12"
+        android:layout_alignEnd="@+id/editText12" />
+
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:background="#ffff"
+        android:layout_below="@+id/editText12"
+        android:layout_alignRight="@+id/textView2"
+        android:layout_alignEnd="@+id/textView2"
+        android:layout_marginRight="14dp"
+        android:layout_marginEnd="14dp" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:background="#ffff"
+        android:textColor="@android:color/black"
+        android:layout_below="@+id/button4"
+        android:layout_toRightOf="@+id/textView"
+        android:layout_toStartOf="@+id/textView14"
+        android:layout_toLeftOf="@+id/textView14" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/spinner"
+        android:layout_alignRight="@+id/spinner"
+        android:layout_below="@+id/button4"
+        android:text="בחרת ב"
+        android:textColor="#ffff"
+        android:layout_toRightOf="@+id/textView3"
+        android:layout_toEndOf="@+id/textView3" />
+
+    <EditText
+        android:id="@+id/editText12"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="29dp"
+        android:background="#ffff"
+        android:editable="false"
+        android:ems="10"
+        android:enabled="false"
+        android:inputType="textMultiLine"
+        tools:editable="false"
+        tools:enabled="true"
+        android:layout_below="@+id/button4"
+        android:layout_alignRight="@+id/spinner"
+        android:layout_alignEnd="@+id/spinner"
+        android:layout_toRightOf="@+id/button6"
+        android:layout_toEndOf="@+id/button6" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:background="#0000"
+        android:text="חזור"
+        android:textColor="#ffff"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/textView4"
+        android:layout_alignEnd="@+id/textView4" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:background="#0000"
+        android:text="שמור"
+        android:textColor="#ffff"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:background="#0000"
+        android:text="סיים "
+        android:textColor="#ffff"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/button6"
+        android:layout_toEndOf="@+id/button6" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="28dp"
+        android:background="#ffff"
+        android:textColor="#000"
+        android:layout_toLeftOf="@+id/textView13"
+        android:layout_toStartOf="@+id/textView13" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="מחיר לאחר הנחה"
+        android:textColor="#ffff"
+        android:layout_alignBaseline="@+id/textView15"
+        android:layout_alignBottom="@+id/textView15"
+        android:layout_alignRight="@+id/textView4"
+        android:layout_alignEnd="@+id/textView4" />
+
+
+</RelativeLayout>

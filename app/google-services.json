@@ -1,0 +1,71 @@
+{
+  "project_info": {
+    "project_number": "874858320126",
+    "firebase_url": "https://project-3594317551915973014.firebaseio.com",
+    "project_id": "project-3594317551915973014",
+    "storage_bucket": "project-3594317551915973014.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:874858320126:android:2dfe4942ffe2c0c4",
+        "android_client_info": {
+          "package_name": "com.example.nir.addresslist30"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "874858320126-05jt808tre5g4h0lmtq4bo9gtu9jqclq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nir.addresslist30",
+            "certificate_hash": "40cfd311dc24838f13335f5659670b0e07661eea"
+          }
+        },
+        {
+          "client_id": "874858320126-ttru1h1mkihan1ls273rlirmk8h87ld4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nir.addresslist30",
+            "certificate_hash": "2e0286366da7404784b27f2ef05500333d2fd68a"
+          }
+        },
+        {
+          "client_id": "874858320126-k7eucq02keb8cl77umscd2lmtfmn21j7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nir.addresslist30",
+            "certificate_hash": "1c38fd69b499d2c97586325a4db3eef4d46b71d7"
+          }
+        },
+        {
+          "client_id": "874858320126-s2hd7pa9kdegqa0r4oq0q6bdrgb48bsl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoHieYEPVW5arNNZvs3tgbfa_EqrJ2kYA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "874858320126-s2hd7pa9kdegqa0r4oq0q6bdrgb48bsl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

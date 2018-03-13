@@ -1,0 +1,226 @@
+package com.example.nir.addresslist30;
+
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.SeekBar;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
+import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by Nir on 9/18/2017.
+ */
+
+public class Order extends AppCompatActivity {
+    private SeekBar discounts;
+    private TextView discountTxt;
+    private Spinner spinner;
+    private Button add;
+    private Button discard;
+    private TextView order;
+    private TextView bill;
+    private Button back;
+    private Button save;
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference myRef = database.getReference("ItemList");
+    private List items=new ArrayList<>();
+    private List orderlst = new ArrayList<>();
+    private List ordernamelst = new ArrayList<>();
+    private Items[] arraySpinner;
+    private List<Items> itemlist = new ArrayList<>();
+    @Override
+    protected void onCreate(final Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.order);
+        getSupportActionBar().hide();
+
+        discounts =(SeekBar) findViewById(R.id.seekBar);
+        discountTxt = (TextView) findViewById(R.id.textView);
+        spinner = (Spinner) findViewById(R.id.spinner);
+        add = (Button) findViewById(R.id.button4);
+        discard = (Button) findViewById(R.id.button6);
+        order = (TextView) findViewById(R.id.editText12) ;
+        bill = (TextView) findViewById(R.id.textView3) ;
+        back = (Button) findViewById(R.id.button5);
+        save = (Button) findViewById(R.id.button7);
+        order.setEnabled(false);
+
+        discounts.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                discountTxt.setText(discounts.getProgress() +"%");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        setItemsInItemList();
+        spinnerItemSet();
+
+
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onAddButtonClick();
+            }
+        });
+
+
+
+
+
+
+
+    }
+
+    public void spinnerItemSet()
+    {
+
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+        database.child("ItemList").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot itemDS: dataSnapshot.getChildren())
+                {
+                    Items item = itemDS.getValue(Items.class);
+                    itemlist.add(item);
+
+                }
+
+                arraySpinner=new Items[itemlist.size()];
+                for(int i=0;i<itemlist.size();i++)
+                {
+                    arraySpinner[i]= new Items(itemlist.get(i).getName(),itemlist.get(i).getPrice(),itemlist.get(i).getQuantity());
+
+                }
+
+                ArrayAdapter<Items> adapter=new ArrayAdapter<Items>(getApplicationContext(),android.R.layout.simple_spinner_item,arraySpinner);
+                spinner.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
+
+    }
+
+    public void setItemsInItemList()
+    {
+         DatabaseReference itemListRef = database.getReference("ItemList");
+         Items pizza=new Items("Pizza",10.00,1);
+         Items cola=new Items("cola",1.50,1);
+         Items chips=new Items("chips",2.49,1);
+         Items[] itemList= new Items[]{pizza,cola,chips};
+
+        for(int i=0;i<itemList.length;i++)
+        {
+            itemListRef.child(itemList[i].getName()).setValue(itemList[i]);
+        }
+
+
+
+
+    }
+
+    public void onAddButtonClick()
+    {
+        Items spinnerItem=(Items) spinner.getSelectedItem();
+        Items spinnerItemTmp=new Items(spinnerItem.getName(),spinnerItem.getPrice(),spinnerItem.getQuantity());
+
+        for(int i=1;i<orderlst.size()+1;i++)
+        {
+            ordernamelst.set(i,((Items)orderlst.get(i)).getName());
+            System.out.println("Names:" + ordernamelst.get(i));
+        }
+
+        if(orderlst.size()==0)
+        {
+            orderlst.add(spinnerItemTmp);
+        }
+        else
+        {
+            for(int i=0;i<orderlst.size();i++)
+            {
+
+
+                if(((Items) orderlst.get(i)).getName()==spinnerItemTmp.getName()) {
+                    Items temp=new Items (((Items) orderlst.get(i)).getName(),((Items) orderlst.get(i)).getPrice(),((Items) orderlst.get(i)).getQuantity());
+                    int quantity=temp.getQuantity();
+                    if(quantity==1 &&  !orderlst.contains(temp))
+                        temp.setQuantity(1);
+                    else
+                        temp.setQuantity(temp.getQuantity()+1);
+                    orderlst.set(i, temp);
+
+
+                }
+
+                else
+                {
+                    if(orderlst.contains(spinnerItemTmp))
+                    {
+                        for(int j=0;j<orderlst.size();j++)
+                        {
+                            if(((Items) orderlst.get(i)).getName()==spinnerItemTmp.getName())
+                            {
+                                Items temp=new Items (((Items) orderlst.get(i)).getName(),((Items) orderlst.get(i)).getPrice(),((Items) orderlst.get(i)).getQuantity());
+                                int quantity=temp.getQuantity();
+                                if(quantity==1 &&  !orderlst.contains(temp)==false)
+                                temp.setQuantity(1);
+                                else
+                                    temp.setQuantity(temp.getQuantity()+1);
+                                orderlst.set(i, temp);
+                            }
+                        }
+                    }
+                    else
+                    orderlst.add(spinnerItemTmp);
+                }
+
+
+                for(int j=0;j<orderlst.size();j++)
+                System.out.print("Text: "+ orderlst.get(j).toString());
+                System.out.println();
+            }
+        }
+
+        String orderStr="";
+        for(int i=0;i<orderlst.size();i++)
+        {
+           orderStr+=orderlst.get(i).toString()+"\n";
+        }
+
+        order.setText(orderStr);
+    }
+
+
+
+}
